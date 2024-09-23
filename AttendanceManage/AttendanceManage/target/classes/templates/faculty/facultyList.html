@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Faculty List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="faculty : ${faculties}">
+                    <td th:text="${faculty.id}"></td>
+                    <td th:text="${faculty.name}"></td>
+                    <td th:text="${faculty.department}"></td>
+                    <td>
+                        <a th:href="@{/faculty/edit/{id}(id=${faculty.id})}">Edit</a> | 
+                        <a th:href="@{/faculty/delete/{id}(id=${faculty.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/faculty/add">Add New Faculty</a>
+    </div>
+</body>
+</html>

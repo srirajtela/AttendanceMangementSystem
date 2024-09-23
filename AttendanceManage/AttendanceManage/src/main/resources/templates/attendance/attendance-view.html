@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+    <title>Attendance View</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Attendance for: <span th:text="${date}"></span></h1>
+    
+    <!-- Example table structure for attendance records -->
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="attendance : ${attendanceList}">
+                <td th:text="${attendance.studentId}"></td>
+                <td th:text="${attendance.studentName}"></td>
+                <td th:text="${attendance.status}"></td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <!-- Form or link to view attendance by date -->
+    <form th:action="@{/attendance/view/{date}(date=${date})}" method="get">
+        <label for="date">Choose Date: </label>
+        <input type="date" id="date" name="date" value="" />
+        <button type="submit">View Attendance</button>
+    </form>
+</body>
+</html>

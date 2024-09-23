@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Attendance</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Update Attendance</h1>
+    <form action="/attendance/update" method="post">
+        <input type="hidden" name="id" th:value="${attendance.id}">
+        <input type="hidden" name="date" th:value="${attendance.date}">
+        
+        <label for="student">Student ID:</label>
+        <input type="text" id="student" name="student.id" th:value="${attendance.student.id}" readonly>
+        
+        <label for="present">Present:</label>
+        <input type="checkbox" id="present" name="present" th:checked="${attendance.present}">
+
+        <button type="submit">Update Attendance</button>
+    </form>
+    <a href="/attendance/list">Back to List</a>
+</body>
+</html>

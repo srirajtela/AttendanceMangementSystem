@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="admin : ${admins}">
+                    <td th:text="${admin.id}"></td>
+                    <td th:text="${admin.name}"></td>
+                    <td th:text="${admin.email}"></td>
+                    <td>
+                        <a th:href="@{/admin/edit/{id}(id=${admin.id})}">Edit</a> | 
+                        <a th:href="@{/admin/delete/{id}(id=${admin.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/admin/add">Add New Admin</a>
+    </div>
+</body>
+</html>

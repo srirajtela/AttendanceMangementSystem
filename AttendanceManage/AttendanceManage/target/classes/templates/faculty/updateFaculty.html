@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Faculty</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Update Faculty</h2>
+        <form th:action="@{/faculty/update/{id}(id=${faculty.id})}" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" th:value="${faculty.name}" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" th:value="${faculty.department}" required>
+            </div>
+            <button type="submit">Update</button>
+        </form>
+        <a href="/faculty/list">Back to List</a>
+    </div>
+</body>
+</html>

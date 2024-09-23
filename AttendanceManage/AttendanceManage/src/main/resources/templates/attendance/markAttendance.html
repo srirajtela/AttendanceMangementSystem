@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Mark Attendance</title>
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+	<h1>Mark Attendance for <span th:text="${date}"></span></h1>
+	<form th:action="@{/attendance/save}" th:object="${attendanceForm}" method="post">
+		<table>
+			<thead>
+				<tr>
+					<th>Student ID</th>
+					<th>Name</th>
+					<th>Present</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Iterate over attendance entries -->
+				<tr th:each="entry, iterStat : ${attendanceForm.attendanceEntries}">
+					<td>
+						<!-- Display Student ID -->
+						<span th:text="${entry.id}"></span>
+						<!-- Hidden input for Student ID in AttendanceEntry -->
+						<input type="hidden" th:field="*{attendanceEntries[__${iterStat.index}__].id}" />
+					</td>
+					<td>
+						<!-- Display Student Name -->
+						<span th:text="${entry.name}"></span>
+					</td>
+					<td>
+						<input type="hidden" th:field="*{attendanceEntries[__${iterStat.index}__].id}" />
+						<input type="checkbox" th:field="*{attendanceEntries[__${iterStat.index}__].present}" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="submit">Save Attendance</button>
+	</form>
+	<a href="/attendance/list">Back to List</a>
+</body>
+
+</html>

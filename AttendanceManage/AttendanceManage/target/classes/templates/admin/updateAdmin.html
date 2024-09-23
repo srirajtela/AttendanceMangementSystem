@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Admin</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Update Admin</h2>
+        <form th:action="@{/admin/edit}" >
+			                <input type="text" id="id" name="id" th:value="${admin.id}" required hidden>
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" th:value="${admin.name}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:value="${admin.email}" required>
+            </div>
+            <button type="submit">Update</button>
+        </form>
+        <a href="/admin/list">Back to List</a>
+    </div>
+</body>
+</html>

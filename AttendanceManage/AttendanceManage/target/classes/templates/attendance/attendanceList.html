@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Attendance List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Attendance List</h1>
+    <a href="/attendance/mark">Mark Attendance for a Date</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student</th>
+                <th>Date</th>
+                <th>Present</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="attendance : ${attendanceList}">
+                <td th:text="${attendance.id}"></td>
+                <td th:text="${attendance.student.name}"></td>
+                <td th:text="${attendance.date}"></td>
+                <td th:text="${attendance.present ? 'Yes' : 'No'}"></td>
+                <td>
+                    <!-- Potential actions could include editing or deleting records -->
+                    <a th:href="@{/attendance/edit/{id}(id=${attendance.id})}">Edit</a>
+                    <a th:href="@{/attendance/delete/{id}(id=${attendance.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
